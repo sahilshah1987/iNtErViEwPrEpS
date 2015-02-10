@@ -20,6 +20,20 @@ Knowledge Base for Concepts related questions in programming interview
     * A class can implement multiple interfaces, while only extend one abstract class
     * All methods in an interface should be public (since they’re all abstract methods); while in an abstract class, you can have different access control to the methods
     * In an interface, no need to use the "abstract" keyword
+    Which should you use, abstract classes or interfaces?
+
+Consider using abstract classes if any of these statements apply to your situation:
+You want to share code among several closely related classes.
+You expect that classes that extend your abstract class have many common methods or fields, or require access modifiers other than public (such as protected and private).
+You want to declare non-static or non-final fields. This enables you to define methods that can access and modify the state of the object to which they belong.
+Consider using interfaces if any of these statements apply to your situation:
+You expect that unrelated classes would implement your interface. For example, the interfaces Comparable and Cloneable are implemented by many unrelated classes.
+You want to specify the behavior of a particular data type, but not concerned about who implements its behavior.
+You want to take advantage of multiple inheritance of type.
+
+An example of an abstract class in the JDK is AbstractMap, which is part of the Collections Framework. Its subclasses (which include HashMap, TreeMap, and ConcurrentHashMap) share many methods (including get, put, isEmpty, containsKey, and containsValue) that AbstractMap defines.
+
+An example of a class in the JDK that implements several interfaces is HashMap, which implements the interfaces Serializable, Cloneable, and Map<K, V>. By reading this list of interfaces, you can infer that an instance of HashMap (regardless of the developer or company who implemented the class) can be cloned, is serializable (which means that it can be converted into a byte stream; see the section Serializable Objects), and has the functionality of a map. In addition, the Map<K, V> interface has been enhanced with many default methods such as merge and forEach that older classes that have implemented this interface do not have to define.
   * Method Overloading Vs Override
     * Method overriding is a **run-time** phenomenon that is the **driving force behind polymorphism**. Implement the inherited method in a different way
       * same signature as the inherited method
